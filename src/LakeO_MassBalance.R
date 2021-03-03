@@ -112,7 +112,7 @@ print(i)
 rslt$area.km2=rslt$area*1e-6
 rslt$volume.km3=rslt$volume*1e-9
 rslt
-write.csv(rslt[,c("z","area.km2","volume.km3")],paste0(export.path,"Okeechobee_StageAreaVolume.csv"),row.names = F)
+# write.csv(rslt[,c("z","area.km2","volume.km3")],paste0(export.path,"Okeechobee_StageAreaVolume.csv"),row.names = F)
 
 # png(filename=paste0(plot.path,"LakeO_AreaVolumeStage.png"),width=4,height=5,units="in",res=200,type="windows",bg="white")
 layout(matrix(1:2,2,1))
@@ -147,17 +147,10 @@ lakeO.stg$Date.EST=date.fun(lakeO.stg$Date)
 lakeO.stg$WY=WY(lakeO.stg$Date.EST)
 lakeO.stg$month=as.numeric(format(lakeO.stg$Date.EST,"%m"))
 lakeO.stg$CY=as.numeric(format(lakeO.stg$Date.EST,"%Y"))
-lakeO.stg$vol.km3=((lakeO.stg$Data.Value-mean.z)*0.0003048)*(area(lakeO)*1e-6)
 
 plot(Data.Value~Date.EST,lakeO.stg)
 
-plot(vol.km3~Date,lakeO.stg)
-plot(Data.Value~Date,lakeO.stg,ylim=c(8,20))
-abline(h=8.55)
-
-WY.vol=ddply(lakeO.stg,c("WY"),summarise,mean.vol.km3=mean(vol.km3,na.rm=T))
-plot(mean.vol.km3~WY,WY.vol,type="l")
-# retention time lake volume divided by Q in or out
+# use process above for volume estimate
 
 mon.vol=ddply(lakeO.stg,c("CY","month","WY"),summarise,mean.vol.km3=mean(vol.km3,na.rm=T))
 

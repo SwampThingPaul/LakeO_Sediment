@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Contact
-Paul Julian | [`r fontawesome::fa(name="fab fa-chrome")`](http://swampthingecology.org) | [`r fontawesome::fa(name="fab fa-twitter")`](https://twitter.com/SwampThingPaul) | [`r fontawesome::fa(name="fas fa-envelope-open-text")`](mailto:pauljulianphd@gmail.com) |
+Paul Julian | [Webpage](http://swampthingecology.org) | [Twitter](https://twitter.com/SwampThingPaul) | [Email](mailto:pauljulianphd@gmail.com) |
 
 
 ## Description/contents
