@@ -37,10 +37,13 @@ vignettes/*.pdf
 
 _presentations/
 src/archive/
+*.Rproj
+
 
 ## Due to size of the file bathymetry data will not be placed in the repo
 GIS/Bathymetry/
 GIS/LakeOkeechobee_Usace/
+
 
 ## Analysis currently in progress
 src/LakeO_SW_trend.R
