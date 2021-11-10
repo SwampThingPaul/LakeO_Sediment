@@ -18,7 +18,7 @@ Provisional and preliminary results for the Lake Okeechobee 2020/2021 sediment s
 ***
 # Sediment Zones
 
-```{r ,fig.align="center",out.width="90%",fig.cap="Sediment zones across Lake Okeechobee observed during the 2020/2021 sampling."}
+```{r ,fig.align="center",out.width="75%",fig.cap="Sediment zones across Lake Okeechobee observed during the 2020/2021 sampling."}
 
 knitr::include_graphics('./plots/Sed2020/LOK_SedType.png')
 ```
@@ -49,7 +49,7 @@ bsplus::bs_button(
 ***
 # Mud Depth
 
-```{r ,fig.align="center",out.width="90%",fig.cap="Mud depth across Lake Okeechobee observed during the 2020/2021 sampling."}
+```{r ,fig.align="center",out.width="75%",fig.cap="Mud depth across Lake Okeechobee observed during the 2020/2021 sampling."}
 
 knitr::include_graphics('./plots/Sed2020/LOK_muddepth_spline.png')
 ```
