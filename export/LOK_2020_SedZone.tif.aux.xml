@@ -1,0 +1,14 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <CategoryNames>
+      <Category></Category>
+      <Category></Category>
+      <Category></Category>
+      <Category>MUD</Category>
+      <Category>PEAT</Category>
+      <Category>ROCK</Category>
+      <Category>SAND</Category>
+      <Category>SAND,MUD</Category>
+    </CategoryNames>
+  </PAMRasterBand>
+</PAMDataset>

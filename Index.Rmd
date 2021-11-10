@@ -1,0 +1,68 @@
+---
+title: "Lake Okeechobee Sediment 2020/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo=FALSE)
+
+library(magrittr)
+library(bsplus)
+library(htmltools)
+```
+
+`r paste("Updated",as.POSIXct(Sys.time(),"%Y-%m-%d %H:%M",tz=""))`
+
+Provisional and preliminary results for the Lake Okeechobee 2020/2021 sediment sampling conducted by University of Florida.
+
+***
+# Sediment Zones
+
+```{r ,fig.align="center",out.width="90%",fig.cap="Sediment zones across Lake Okeechobee observed during the 2020/2021 sampling."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_SedType.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "./export/LOK_2020_SedZone.tiff"
+      )
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Shapefile",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "./export/shapefiles/LOK_2020_SedZone.zip"
+      )
+```
+
+<br>
+* Spatially interpolated using weighted k-nearest neighbor classifier with up to 10 nearest neighbots considered (i.e. k=10; `kknn` function in the `kknn` R-library).  
+
+***
+# Mud Depth
+
+```{r ,fig.align="center",out.width="90%",fig.cap="Mud depth across Lake Okeechobee observed during the 2020/2021 sampling."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_muddepth_spline.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "./export/LOK_2020_MudDepth.tiff"
+      )
+```
+
+<br>
+* Spatially using tension spline (`Tps` function in the `fields` R-library).  

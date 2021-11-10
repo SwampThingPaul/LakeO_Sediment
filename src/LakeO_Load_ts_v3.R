@@ -44,7 +44,7 @@ utm17=CRS(SRS_string="EPSG:26917")
 tmap_mode("view")
 
 # -------------------------------------------------------------------------
-dates=date.fun(c("1978-05-01","2020-04-30"))
+dates=date.fun(c("1978-05-01","2021-04-30"))
 
 # Discharge ---------------------------------------------------------------
 flow.dbkeys=read.xlsx(paste0(data.path,"discharge/LakeO_DBKEYS_V3.xlsx"),sheet=1)
@@ -111,6 +111,38 @@ flow.mon.sum2=rbind(subset(flow.mon.sum,ALIAS!="C41H78_I"),L61E_HP7)
 #            ddply(flow.mon.sum,"WY",summarise,TFlow.acft2=sum(cfs.to.acftd(Inflow),na.rm=T)),"WY")
 # plot(TFlow.acft~TFlow.acft2,test);abline(0,1)
 
+all.out=ddply(subset(flow.mon.sum,WY%in%seq(1979,2020,1)),"WY",summarise,Tflow=sum(cfs.to.acftd(Outflow),na.rm=T))
+mean(subset(all.out,WY%in%seq(2016,2020,1))$Tflow)/1000
+mean(subset(all.out,WY%in%seq(2008,2020,1))$Tflow)/10e2
+
+south.out=ddply(subset(flow.mon.sum,Basin=="S"&WY%in%seq(1979,2020,1)),"WY",summarise,Tflow=sum(cfs.to.acftd(Outflow),na.rm=T))
+south.out=merge(south.out,data.frame(WY=2016:2020,WY5mean=mean(subset(south.out,WY%in%seq(2016,2020,1))$Tflow)),all.x=T)
+south.out=merge(south.out,data.frame(WY=2008:2020,LORS08mean=mean(subset(south.out,WY%in%seq(2008,2020,1))$Tflow)),all.x=T)
+
+# png(filename=paste0(plot.path,"LakeO_QSouth.png"),width=6.5,height=4,units="in",res=200,type="windows",bg="white")
+# layout(matrix(1:2,2,1))
+par(family="serif",mar=c(1,2.25,0.25,0.5),oma=c(3,2.5,0.75,0.1));
+
+xlim.val=c(1979,2020);by.x=5;xmaj=seq(xlim.val[1],xlim.val[2],by.x);xmin=seq(xlim.val[1],xlim.val[2],by.x/by.x)
+ylim.val=c(0,4e6);by.y=1e6;ymaj=seq(ylim.val[1],ylim.val[2],by.y);ymin=seq(ylim.val[1],ylim.val[2],by.y/2)
+
+plot(Tflow~WY,all.out,type="n",xlim=xlim.val,ylim=ylim.val,axes=F,ann=F)
+abline(h=ymaj,v=xmaj,lty=3,col="grey",lwd=0.5)
+with(all.out,pt_line(WY,Tflow,2,"dodgerblue1",1,21,"dodgerblue1"))
+with(south.out,pt_line(WY,Tflow,2,"indianred1",1,21,"indianred1"))
+with(south.out,lines(WY,WY5mean,lwd=2,col="forestgreen",lty=2))
+with(south.out,lines(WY,LORS08mean,lwd=3,col="indianred1"))
+axis_fun(1,xmaj,xmin,xmaj,line=-0.5)
+axis_fun(2,ymaj,ymin,ymaj/1000);box(lwd=1)
+mtext(side=2,line=2.75,"Discharge (x1000 Ac-Ft WY\u207B\u00B9)")
+mtext(side=1,line=2,"Water Year")
+
+legend("topleft",legend=c("Total Outflow","Total Outflow South","5WY Avg","LORS08 Avg"),
+       pch=c(21,21,NA,NA),lty=c(NA,NA,2,1),lwd=c(0.1,0.1,2,2),
+       col=c("black","black","forestgreen","indianred1"),
+       pt.bg=c("dodgerblue1","indianred1",NA,NA),pt.cex=1,
+       ncol=1,cex=0.8,bty="n",y.intersp=1,x.intersp=0.75,xpd=NA,xjust=0.5,yjust=0.5)
+dev.off()
 # Water Quality -----------------------------------------------------------
 wq.sites=ddply(flow.dbkeys,"WQSite",summarise,N.val=N.obs(ALIAS))
 
