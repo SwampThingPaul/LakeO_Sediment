@@ -1,11 +1,16 @@
 ---
 title: "Lake Okeechobee Sediment 2020/2021"
-output: html_document
+output: 
+  html_document: 
+    toc: yes
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo=FALSE)
 
+library(flextable)
 library(magrittr)
 library(bsplus)
 library(htmltools)
@@ -66,3 +71,61 @@ bsplus::bs_button(
 
 <br>
 * Spatially using tension spline (`Tps` function in the `fields` R-library).  
+
+***
+# Total Phoshorus 
+```{r ,fig.align="center",out.width="100%",fig.cap="Total phosphorus across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_TPKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "./export/LOK_2020_SedTP.tiff"
+      )
+```
+
+```{r}
+TP.rslts=read.csv('./Export/krige_rslts/TP_rslts.csv')
+TP.rslts%>%
+        flextable()%>%
+        colformat_double(j=2:4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6:8,digits=2)%>%
+  set_caption(caption="Sediment total phosphorus kriging model fit results")
+```
+
+***
+# Inorganic Phoshorus (HCl TP)
+```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_HClTPKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "./export/LOK_2020_SedHClTP.tiff"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/HClTP_rslts.csv')
+rslts%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+  set_caption(caption="Sediment inorganic phosphorus kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+```
+
+***
