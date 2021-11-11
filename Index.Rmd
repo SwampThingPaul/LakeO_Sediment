@@ -34,7 +34,7 @@ bsplus::bs_button(
     button_type = "primary",
     button_size = "small") %>%
     htmltools::a(
-      href = "./export/LOK_2020_SedZone.tiff"
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedZone.tif"
       )
 ```
 
@@ -44,7 +44,7 @@ bsplus::bs_button(
     button_type = "primary",
     button_size = "small") %>%
     htmltools::a(
-      href = "./export/shapefiles/LOK_2020_SedZone.zip"
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/shapefiles/LOK_2020_SedZone.zip"
       )
 ```
 
@@ -65,7 +65,7 @@ bsplus::bs_button(
     button_type = "primary",
     button_size = "small") %>%
     htmltools::a(
-      href = "./export/LOK_2020_MudDepth.tiff"
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_MudDepth.tif"
       )
 ```
 
@@ -85,7 +85,7 @@ bsplus::bs_button(
     button_type = "primary",
     button_size = "small") %>%
     htmltools::a(
-      href = "./export/LOK_2020_SedTP.tiff"
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedTP.tif"
       )
 ```
 
@@ -112,7 +112,7 @@ bsplus::bs_button(
     button_type = "primary",
     button_size = "small") %>%
     htmltools::a(
-      href = "./export/LOK_2020_SedHClTP.tiff"
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedHClTP.tif"
       )
 ```
 
@@ -129,3 +129,5 @@ rslts%>%
 ```
 
 ***
+
+**Work in Progress** Other parameters to follow
