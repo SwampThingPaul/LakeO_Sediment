@@ -99,6 +99,16 @@ TP.rslts%>%
   set_caption(caption="Sediment total phosphorus kriging model fit results")
 ```
 
+
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="100%",fig.cap="Total phosphorus krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.99, p value=0.42)."}
+
+knitr::include_graphics('./plots/Sed2020/TPModel_diag.png')
+```
+
+
+
+
 ***
 # Inorganic Phoshorus (HCl TP)
 ```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
