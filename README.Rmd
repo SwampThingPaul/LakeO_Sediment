@@ -32,6 +32,8 @@ Paul Julian | [Webpage](http://swampthingecology.org) | [Twitter](https://twitte
 knitr::include_graphics("./plots/LakeO_Load.png")
 ```
 
+- Sediment Study
+  - Preliminary results can be found [link](https://swampthingecology.org/LakeO_Sediment/Index.html).
 
 ***
 
