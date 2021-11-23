@@ -101,7 +101,7 @@ TP.rslts%>%
 
 
 **Model diagnostic plots**
-```{r ,fig.align="center",out.width="100%",fig.cap="Total phosphorus krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.99, p value=0.42)."}
+```{r ,fig.align="center",out.width="75%",fig.cap="Total phosphorus krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.99, p value=0.42)."}
 
 knitr::include_graphics('./plots/Sed2020/TPModel_diag.png')
 ```
@@ -111,7 +111,16 @@ knitr::include_graphics('./plots/Sed2020/TPModel_diag.png')
 
 ***
 # Inorganic Phoshorus (HCl TP)
-```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
+
+* Data was log-transformed prior to variogram fitting.
+* After kriging, the data were back-transformed consistent with Yamamoto (2007) and Journel (1980)
+
+```{r ,fig.align="center",out.width="50%",fig.cap="Comparison of original values, back-transformed and corrected back-transformed data."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_HClTPKrig_BT.den.png')
+```
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus (HCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
 
 knitr::include_graphics('./plots/Sed2020/LOK_HClTPKrig_CI.png')
 ```
@@ -138,6 +147,63 @@ rslts%>%
   set_caption(caption="Sediment inorganic phosphorus kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
 ```
 
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="75%",fig.cap="Inorganic phosphorus (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.98, p value=0.09)."}
+
+knitr::include_graphics('./plots/Sed2020/HClTPModel_diag.png')
+```
+
+
+***
+# Inorganic Phoshorus (NaHCO~3~ P~i~)
+
+* Data was log-transformed prior to variogram fitting.
+* After kriging, the data were back-transformed consistent with Yamamoto (2007) and Journel (1980)
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_NaHCO3PiKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedNaHCO3_Pi.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/NaHCO3Pi_rslts.csv')
+rslts%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+  set_caption(caption="Sediment inorganic phosphorus (NaHCO\u2083 extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+```
+
+
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="75%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.98, p value=0.07)."}
+
+knitr::include_graphics('./plots/Sed2020/NaHCO3_PiModel_diag.png')
+```
+
+
 ***
 
 **Work in Progress** Other parameters to follow
+
+***
+
+# References 
+
+* Journel AG (1980) The lognormal approach to predicting local distributions of selective mining unit grades. Journal of the International Association for Mathematical Geology 12:285–303. doi: 10.1007/BF01029417
+
+* Yamamoto JK (2007) On unbiased backtransform of lognormal kriging estimates. Computational Geosciences 11:219–234. doi: 10.1007/s10596-007-9046-x
+
