@@ -55,3 +55,4 @@ src/LakeO_SW_trend.R
 src/LakeO_krig.R
 src/LakeO_Sediment2021_v2.R
 
+*.RDataTmp*
