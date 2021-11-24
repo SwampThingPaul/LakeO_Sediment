@@ -70,7 +70,17 @@ bsplus::bs_button(
 ```
 
 <br>
-* Spatially using tension spline (`Tps` function in the `fields` R-library).  
+* Spatially interpolated using tension spline (`Tps` function in the `fields` R-library).  
+
+***
+# Bulk Density
+
+**place holder**
+
+***
+# Mineral Content
+
+**place holder**
 
 ***
 # Total Phoshorus 
@@ -160,7 +170,7 @@ knitr::include_graphics('./plots/Sed2020/HClTPModel_diag.png')
 * Data was log-transformed prior to variogram fitting.
 * After kriging, the data were back-transformed consistent with Yamamoto (2007) and Journel (1980)
 
-```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated TP concentrations and (right) 95% Confience Interval interpolation."}
+```{r ,fig.align="center",out.width="100%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated P~i~ concentrations and (right) 95% Confience Interval interpolation."}
 
 knitr::include_graphics('./plots/Sed2020/LOK_NaHCO3PiKrig_CI.png')
 ```
@@ -194,10 +204,195 @@ rslts%>%
 knitr::include_graphics('./plots/Sed2020/NaHCO3_PiModel_diag.png')
 ```
 
+***
+# Inorganic Phoshorus (KCl P~i~)
+
+**place holder**
+**Values below MDL - waiting on Lab for MDL value(s)**
 
 ***
+# Total Nitrogen
 
-**Work in Progress** Other parameters to follow
+**place holder**
+**Potential Data issue - most values reported < MDL**
+
+***
+# Ammonia (KCl extracted NH3)
+
+**place holder**
+
+
+***
+# Calcium (HCl extracted Ca)
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Calcium (HCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Ca concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_HClCaKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedHClCa.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/HClCa_rslts.csv')
+rslts%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+  set_caption(caption="Calcium (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+```
+
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="75%",fig.cap="Calcium (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
+
+knitr::include_graphics('./plots/Sed2020/HClCaModel_diag.png')
+```
+
+* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
+
+***
+# Iron (HCl extracted Fe)
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Iron (HCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Fe concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_HClFeKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedHClFe.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/HClFe_rslts.csv')
+rslts%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+  set_caption(caption="Iron (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+```
+
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="75%",fig.cap="Iron (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
+
+knitr::include_graphics('./plots/Sed2020/HClFeModel_diag.png')
+```
+
+* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
+
+
+***
+# Aluminum (HCl extracted Al)
+
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Aluminum (HCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Al concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_HClAlKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedHClAl.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/HClAl_rslts.csv')
+rslts%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+  set_caption(caption="Aluminum (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+```
+
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="75%",fig.cap="Aluminum (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
+
+knitr::include_graphics('./plots/Sed2020/HClAlModel_diag.png')
+```
+
+* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
+
+
+***
+# Magnesium (HCl extracted Mg)
+
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Magnesium (HCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Mg concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_HClMgKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedHClMg.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/HClMg_rslts.csv')
+rslts%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+  set_caption(caption="Magnesium (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+```
+
+**Model diagnostic plots**
+```{r ,fig.align="center",out.width="75%",fig.cap="Magnesium (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
+
+knitr::include_graphics('./plots/Sed2020/HClMgModel_diag.png')
+```
+
+* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
+
+
+
+
+***
+# TN:TP Molar ratio
+
+**place holder**
+
+***
+# Ca:Al Molar ratio
+
+<!-- https://www.nrs.fs.fed.us/futures/current_conditions/soil_water_conservation/calcium_aluminum_ratio.html -->
+
+**place holder**
+
 
 ***
 
