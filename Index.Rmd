@@ -213,8 +213,18 @@ knitr::include_graphics('./plots/Sed2020/NaHCO3_PiModel_diag.png')
 ***
 # Total Nitrogen
 
-**place holder**
-**Potential Data issue - most values reported < MDL**
+* 69 of the 148 samples were reported less than the MDL (0.200 g kg^-1^)
+
+```{r ,fig.align="center",out.width="75%",fig.cap="Histogram of sediment total nitrogen concentrations sampled across Lake Okeechobee observed during the 2020/2021 sampling."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_TNhist.png')
+```
+
+```{r ,fig.align="center",out.width="75%",fig.cap="Bubbleplot of total nitrogen across Lake Okeechobee observed during the 2020/2021 sampling."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_TNBubble.png')
+```
+
 
 ***
 # Ammonia (KCl extracted NH3)
