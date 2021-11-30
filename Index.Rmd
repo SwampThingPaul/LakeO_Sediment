@@ -75,12 +75,47 @@ bsplus::bs_button(
 ***
 # Bulk Density
 
-**place holder**
+```{r ,fig.align="center",out.width="75%",fig.cap="Bulk Density across Lake Okeechobee observed during the 2020/2021 sampling."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_BD_spline.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_BD.tif"
+      )
+```
+
+<br>
+* Spatially interpolated using tension spline (`Tps` function in the `fields` R-library).  
+
 
 ***
 # Mineral Content
 
-**place holder**
+
+```{r ,fig.align="center",out.width="75%",fig.cap="Mineral content across Lake Okeechobee observed during the 2020/2021 sampling."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_MC_spline.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_MC.tif"
+      )
+```
+
+<br>
+* Spatially interpolated using tension spline (`Tps` function in the `fields` R-library).  
+
 
 ***
 # Total Phoshorus 
