@@ -136,23 +136,13 @@ bsplus::bs_button(
 
 ```{r}
 TP.rslts=read.csv('./Export/krige_rslts/TP_rslts.csv')
-TP.rslts%>%
+TP.rslts[,1:8]%>%
         flextable()%>%
         colformat_double(j=2:4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6:8,digits=2)%>%
   set_caption(caption="Sediment total phosphorus kriging model fit results")
 ```
-
-
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Total phosphorus krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.99, p value=0.42)."}
-
-knitr::include_graphics('./plots/Sed2020/TPModel_diag.png')
-```
-
-
-
 
 ***
 # Inorganic Phoshorus (HCl TP)
@@ -182,20 +172,14 @@ bsplus::bs_button(
 
 ```{r}
 rslts=read.csv('./Export/krige_rslts/HClTP_rslts.csv')
-rslts%>%
+rslts[,1:8]%>%
         flextable()%>%
         colformat_double(j=2:3,big.mark = "",digits = 3)%>%
         colformat_double(j=4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6,digits=3)%>%
         colformat_double(j=7:8,digits=2)%>%
-  set_caption(caption="Sediment inorganic phosphorus kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
-```
-
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Inorganic phosphorus (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.98, p value=0.09)."}
-
-knitr::include_graphics('./plots/Sed2020/HClTPModel_diag.png')
+  set_caption(caption="Sediment inorganic phosphorus kriging model fit results. Data were log-transformed to improve model fit.")
 ```
 
 
@@ -222,28 +206,48 @@ bsplus::bs_button(
 
 ```{r}
 rslts=read.csv('./Export/krige_rslts/NaHCO3Pi_rslts.csv')
-rslts%>%
+rslts[,c(1:8,11)]%>%
         flextable()%>%
         colformat_double(j=2:3,big.mark = "",digits = 3)%>%
         colformat_double(j=4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6,digits=3)%>%
         colformat_double(j=7:8,digits=2)%>%
-  set_caption(caption="Sediment inorganic phosphorus (NaHCO\u2083 extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Sediment inorganic phosphorus (NaHCO\u2083 extracted) kriging model fit results. Data were log-transformed to improve model fit.")
 ```
 
+* Gaussian model was used to perform kriging.
 
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution (Shapiro-Wilk; W=0.98, p value=0.07)."}
+```{r ,fig.align="center",out.width="75%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) semivariogram comparison."}
 
-knitr::include_graphics('./plots/Sed2020/NaHCO3_PiModel_diag.png')
+knitr::include_graphics('./plots/Sed2020/LOK_NaHCO3_PiVario.png')
 ```
 
 ***
 # Inorganic Phoshorus (KCl P~i~)
 
-**place holder**
-**Values below MDL - waiting on Lab for MDL value(s)**
+**Values below MDL - assumed MDL of 0.17 mg/kg**
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/KClPi_rslts.csv')
+rslts[,c(1:8,11)]%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 1)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Sediment KCl extracted inroganic phosphorus kriging model fit results")
+```
+
+* Due to low R2, no kriging was performed (also evaluated data using log-transformed concentrations)
+
+```{r ,fig.align="center",out.width="75%",fig.cap="Bubble plot of inorganic phosphorus (KCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_KClPiConc.png')
+```
 
 ***
 # Total Nitrogen
@@ -261,11 +265,80 @@ knitr::include_graphics('./plots/Sed2020/LOK_TNBubble.png')
 ```
 
 
+```{r ,fig.align="center",out.width="100%",fig.cap="Total Nitrogen across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated P~i~ concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_TNKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedTN.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/TN_rslts.csv')
+rslts[,c(1:8,11)]%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Total nitrogen kriging model fit results. Data were log-transformed to improve model fit.")
+```
+
+* Spherical model was used to perform kriging.
+
+```{r ,fig.align="center",out.width="75%",fig.cap="Total nitrogen semivariogram comparison."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_TNVario.png')
+```
+
 ***
 # Ammonia (KCl extracted NH3)
 
-**place holder**
+**Values below MDL - assumed MDL of 0.16 mg/kg**
 
+```{r ,fig.align="center",out.width="100%",fig.cap="Ammonia (KCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated P~i~ concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_KClNH3Krig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_SedKCl_HN3.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/KClNH3_rslts.csv')
+rslts[,c(1:8,11)]%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Ammonia (KCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
+```
+
+* Spherical model was used to perform kriging.
+
+```{r ,fig.align="center",out.width="75%",fig.cap="Inorganic phosphorus (NaHCO\u2083 extracted) semivariogram comparison."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_KClNH3_PiVario.png')
+```
 
 ***
 # Calcium (HCl extracted Ca)
@@ -287,23 +360,18 @@ bsplus::bs_button(
 
 ```{r}
 rslts=read.csv('./Export/krige_rslts/HClCa_rslts.csv')
-rslts%>%
+rslts[,c(1:8,11)]%>%
         flextable()%>%
         colformat_double(j=2:3,big.mark = "",digits = 3)%>%
         colformat_double(j=4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6,digits=3)%>%
         colformat_double(j=7:8,digits=2)%>%
-  set_caption(caption="Calcium (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Calcium (HCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
 ```
 
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Calcium (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
-
-knitr::include_graphics('./plots/Sed2020/HClCaModel_diag.png')
-```
-
-* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
+* Spherical model was used to perform kriging.
 
 ***
 # Iron (HCl extracted Fe)
@@ -325,28 +393,21 @@ bsplus::bs_button(
 
 ```{r}
 rslts=read.csv('./Export/krige_rslts/HClFe_rslts.csv')
-rslts%>%
+rslts[,c(1:8,11)]%>%
         flextable()%>%
         colformat_double(j=2:3,big.mark = "",digits = 3)%>%
         colformat_double(j=4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6,digits=3)%>%
         colformat_double(j=7:8,digits=2)%>%
-  set_caption(caption="Iron (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Iron (HCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
 ```
 
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Iron (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
-
-knitr::include_graphics('./plots/Sed2020/HClFeModel_diag.png')
-```
-
-* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
-
+* Exponential model was used to perform kriging.
 
 ***
 # Aluminum (HCl extracted Al)
-
 
 ```{r ,fig.align="center",out.width="100%",fig.cap="Aluminum (HCl extracted) across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Al concentrations and (right) 95% Confience Interval interpolation."}
 
@@ -365,24 +426,18 @@ bsplus::bs_button(
 
 ```{r}
 rslts=read.csv('./Export/krige_rslts/HClAl_rslts.csv')
-rslts%>%
+rslts[,c(1:8,11)]%>%
         flextable()%>%
         colformat_double(j=2:3,big.mark = "",digits = 3)%>%
         colformat_double(j=4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6,digits=3)%>%
         colformat_double(j=7:8,digits=2)%>%
-  set_caption(caption="Aluminum (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Aluminum (HCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
 ```
 
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Aluminum (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
-
-knitr::include_graphics('./plots/Sed2020/HClAlModel_diag.png')
-```
-
-* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
-
+* Gaussian model was used to perform kriging.
 
 ***
 # Magnesium (HCl extracted Mg)
@@ -405,39 +460,121 @@ bsplus::bs_button(
 
 ```{r}
 rslts=read.csv('./Export/krige_rslts/HClMg_rslts.csv')
-rslts%>%
+rslts[,c(1:8,11)]%>%
         flextable()%>%
         colformat_double(j=2:3,big.mark = "",digits = 3)%>%
         colformat_double(j=4,big.mark = "",digits = 0)%>%
         colformat_double(j=5,digits=1)%>%
         colformat_double(j=6,digits=3)%>%
         colformat_double(j=7:8,digits=2)%>%
-  set_caption(caption="Magnesium (HCl extracted) kriging model fit results. Data were log-transformed to fit assumptions of the model and improve model fit.")
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Magnesium (HCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
 ```
 
-**Model diagnostic plots**
-```{r ,fig.align="center",out.width="75%",fig.cap="Magnesium (HCl extracted) krige model diagonistic plots including residual versus fitted (top left), QQplot (bottom left), scale-location (top right) and histogram of residuals (bottom right). Residuals are not significantly different from a normal distribution."}
-
-knitr::include_graphics('./plots/Sed2020/HClMgModel_diag.png')
-```
-
-* Ordinary krige model residuals were not normally distributed (**NOTE:** Ordinary krige interpolation does not depend on any distribution assumptions). 
-
-
+* Spherical model was used to perform kriging.
 
 
 ***
-# TN:TP Molar ratio
+# Porewater Dissolved Inorganic Phosphorus
 
-**place holder**
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Porewater dissolved inorganic P across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Mg concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_PWDIPKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_PWDIP.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/PWDIP_rslts.csv')
+rslts[,c(1:8,11)]%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Magnesium (HCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
+```
+
+* Spherical model was used to perform kriging.
 
 ***
-# Ca:Al Molar ratio
+# Porewater Total Phosphorus
 
-<!-- https://www.nrs.fs.fed.us/futures/current_conditions/soil_water_conservation/calcium_aluminum_ratio.html -->
 
-**place holder**
+```{r ,fig.align="center",out.width="100%",fig.cap="Porewater total P across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Mg concentrations and (right) 95% Confience Interval interpolation."}
 
+knitr::include_graphics('./plots/Sed2020/LOK_PWTPKrig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_PWTP.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/PWTP_rslts.csv')
+rslts[,c(1:8,11)]%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Magnesium (HCl extracted) kriging model fit results.")
+```
+
+* Exponential model was used to perform kriging.
+
+***
+# Porewater Ammonia
+
+
+```{r ,fig.align="center",out.width="100%",fig.cap="Porewater ammonia across Lake Okeechobee observed during the 2020/2021 sampling including (left) semivariogram, (center) interpolated Mg concentrations and (right) 95% Confience Interval interpolation."}
+
+knitr::include_graphics('./plots/Sed2020/LOK_PWNH3Krig_CI.png')
+```
+
+```{r} 
+bsplus::bs_button(
+    label = "Download Conc. Krige GeoTiff",
+    button_type = "primary",
+    button_size = "small") %>%
+    htmltools::a(
+      href = "https://github.com/SwampThingPaul/LakeO_Sediment/raw/main/export/LOK_2020_PWNH3.tif"
+      )
+```
+
+```{r}
+rslts=read.csv('./Export/krige_rslts/PWNH3_rslts.csv')
+rslts[,c(1:8,11)]%>%
+        flextable()%>%
+        colformat_double(j=2:3,big.mark = "",digits = 3)%>%
+        colformat_double(j=4,big.mark = "",digits = 0)%>%
+        colformat_double(j=5,digits=1)%>%
+        colformat_double(j=6,digits=3)%>%
+        colformat_double(j=7:8,digits=2)%>%
+        colformat_double(j=9,digits=1)%>%
+  set_caption(caption="Magnesium (HCl extracted) kriging model fit results. Data were log-transformed to improve model fit.")
+```
+
+* Spherical model was used to perform kriging.
 
 ***
 

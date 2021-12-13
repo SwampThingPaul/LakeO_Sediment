@@ -9,6 +9,7 @@
       <Category>ROCK</Category>
       <Category>SAND</Category>
       <Category>SAND,MUD</Category>
+      <Category>SHELL</Category>
     </CategoryNames>
   </PAMRasterBand>
 </PAMDataset>
