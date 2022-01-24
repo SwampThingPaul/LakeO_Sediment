@@ -1,0 +1,220 @@
+/* Basic Blue and White SCCF ppt */
+
+/* div.my-footer {
+  background-color: #005D8E;
+    position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 15px;
+  width: 100%;
+}
+*/
+
+div.my-footer {
+    background-color: #1a1917;
+      position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 20px;
+    width: 100%;
+  }
+
+div.my-footer span {
+  font-size: 10pt;
+  color: #F7F8FA;
+    position: absolute;
+  left: 15px;
+  bottom: 2px;
+}
+
+  a,
+a:visited {
+  color: #1a1917;
+  border-bottom: 1px solid  #61acf0;
+  box-shadow: inset 0 -2px 0  #61acf0;
+}
+
+a:hover,
+a:focus {
+  color: #1a1917;
+  background: rgba(97, 172, 240, .5);
+  border-bottom: none;
+}
+
+a > code {
+  color: #61acf0;
+  text-decoration: none;
+}
+
+/* Fonts */
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Muli:600,700,800);
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Upright:700');
+
+body {
+  font-family: serif;
+}
+
+h1, h2, h3 {
+  font-family: serif;
+  font-weight: 600;
+  color: #000000;
+}
+
+.inverse h1 {
+  font-family: 'Muli';
+  font-weight: 800;
+  font-size: 2.5em; 
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Inconsolata', 'Lucida Console', Monaco, monospace;
+  font-size: 75%;
+}
+
+.fancy{
+  font-family: 'Cormorant Upright', serif;
+  font-weight: 700;
+}
+
+.remark-slide-number {
+  bottom: 18px;
+  opacity: 0.5;
+  position: absolute;
+  right: 20px;
+}
+
+.title-slide .remark-slide-number { 
+    display: none; 
+}
+
+
+.small { 
+  font-size: 70%;
+}
+
+.left-code{
+  color: #777;
+  width: 35%;
+  height: 92%;
+  float: left;
+}
+
+.right-plot{
+  width: 62%;
+  float: right;
+  padding-left: 1%;
+}
+
+/* https://stackoverflow.com/questions/50919104/horizontally-scrollable-output-on-xaringan-slides */
+  
+  pre {
+    background: #f8f8f8; /* match github highlightjs */
+      max-width: 100%;
+    overflow-x: auto;
+  }
+
+img.lil {
+  width: 15%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.red{
+  color: #E8412C;
+}
+
+
+/* progress bar instead of slide numbers */
+/* https://github.com/yihui/xaringan/issues/109#issuecomment-403148497 */ 
+/*.remark-slide-number {
+  position: inherit;
+}
+
+.remark-slide-number .progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  height: 6px;
+  display: block;
+  left: 0;
+  right: 0;
+}
+
+.remark-slide-number .progress-bar {
+  height: 100%;
+  background-color: red;
+}
+
+*/
+
+/* Coloured content boxes */
+
+
+.content-box { 
+    box-sizing: content-box;
+    	background-color: #e2e2e2;
+  /* Total width: 160px + (2 * 20px) + (2 * 8px) = 216px
+     Total height: 80px + (2 * 20px) + (2 * 8px) = 136px
+     Content box width: 160px
+     Content box height: 80px */
+}
+
+
+.content-box-blue,
+.content-box-gray,
+.content-box-grey,
+.content-box-army,
+.content-box-green,
+.content-box-purple,
+.content-box-red,
+.content-box-yellow {
+    border-radius: 15px;
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    width: 100%;
+}
+
+.content-box-blue {
+    background-color: #F0F8FF;
+
+}
+
+.content-box-gray {
+    background-color: #e2e2e2;
+}
+
+.content-box-grey {
+	background-color: #F5F5F5;
+}
+
+.content-box-army {
+	background-color: #737a36;
+}
+
+.content-box-green {
+	background-color: #d9edc2;
+}
+
+.content-box-purple {
+	background-color: #e2e2f9;
+}
+
+.content-box-red {
+	background-color: #f9dbdb;
+}
+
+.content-box-yellow {
+	background-color: #fef5c4;
+}
+
+
+.full-width {
+    display: flex;
+    width: 100%;
+    flex: 1 1 auto;
+}
+

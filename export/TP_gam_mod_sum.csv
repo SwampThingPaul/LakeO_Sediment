@@ -1,0 +1,7 @@
+"Component","Term","Estimate","Std Error","t-value","p-value"
+"Component","Term","Estimate","Std Error","t-value","p-value"
+"A. parametric coefficients","(Intercept)","4.46","0.01","338.34","<0.01"
+"Component","Term","edf","Ref. df","F-value","p-value"
+"B. smooth terms","s(WY)","19.93"," 23.00","19.30","<0.01"
+"B. smooth terms","s(UTMX,UTMY)","22.67"," 24.00","47.97","<0.01"
+"B. smooth terms","ti(UTMX,UTMY,WY)","67.69","514.00"," 0.42","<0.01"

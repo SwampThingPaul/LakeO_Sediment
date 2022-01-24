@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>LOK Sediment</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Paul Julian" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/tabwid/tabwid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="libs/custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: true
+
+---
+name: title
+class: left, middle
+
+### Here's the story of the Hurricane… Sediment resuspension and phosphorus dynamics in a shallow subtropical lake.
+
+January 25, 2022
+
+
+&lt;!-- this ends up being the title slide since seal = FALSE--&gt;
+
+
+.footnote[
+
+.small[Use cursor keys for navigation, press .red["O"] for a slide .red[O]verview]
+
+]
+
+---
+name: objectives
+
+### Objectives
+
+1. Evaluate the temporal and spatial dynamics of water column total suspended solids and total phosphorus in Lake Okeechobee and 
+
+2. determine the spatial distribution and change over time of sediment TP concentration from three synoptic surveys of lake sediments conducted in 1988, 1998, and 2006 (add 2020?). 
+
+
+### Hypothesis
+
+* limnetic zone of the lake has the greatest effect on water column suspended solids and TP concentrations driven largely by sediment characteristics that allow the sediments to become entrained and redistributed throughout the lake, especially during large disturbance events such as hurricanes. 
+
+---
+name: map
+
+### Sampling Map
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/LOK_Maps_Fig1.png" alt="Long-term sediment and water column monitoring locations within Lake Okeechobee and Hurricane/tropical storm track history of the 1978 to 2006 period." width="75%" /&gt;
+&lt;p class="caption"&gt;Long-term sediment and water column monitoring locations within Lake Okeechobee and Hurricane/tropical storm track history of the 1978 to 2006 period.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: GAM
+
+### Water Column TSS/TP GAM
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/FigX_LOK_TSS_TPGAM.png" alt="Total suspended sediments (TSS; left) and total phosphorus (TP; right) effects plots of the spatio-temporal generalized additive model. Top plots represent the effect of water year (WY) for each parameter, bottom plots represent the spatial effect for TSS and TP, respectively. " width="80%" /&gt;
+&lt;p class="caption"&gt;Total suspended sediments (TSS; left) and total phosphorus (TP; right) effects plots of the spatio-temporal generalized additive model. Top plots represent the effect of water year (WY) for each parameter, bottom plots represent the spatial effect for TSS and TP, respectively. &lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: Mixing
+
+### Ideal Mixing Model 
+$$
+`\begin{align}
+  \Large \begin{split}
+      BD=\frac{1}{\Big(\frac{LOI}{k_{1}}+\frac{(100-LOI)}{k_{2}}\Big)}
+  \end{split}
+\end{align}`
+$$
+Idea from Morris et al (2016)
+
+* Coefficients `\(k_{1}\)` and `\(k_{2}\)` of this ideal mixing model are the bulk, self-packing densities of pure organic and mineral matter with units of g cm&lt;sup&gt;-3&lt;/sup&gt;
+
+  * R&lt;sup&gt;2&lt;/sup&gt; = 0.82; RMSE = 0.22
+
+  * `\(k_{1}\)` 8.44 `\(\pm\)` 0.50  g cm&lt;sup&gt;-3&lt;/sup&gt; (t-value = 16.92, `\(\rho\)`-value &lt; 0.01)  
+  * `\(k_{2}\)` 167.2 `\(\pm\)` 4.9  g cm&lt;sup&gt;-3&lt;/sup&gt; (t-value = 34.09, `\(\rho\)`-value &lt; 0.01) 
+
+Organic versus mineral contributions to sediment. Coarse estimates indicate organic accretion/accumulation is higher (see draft manuscript).
+
+.footnote[
+.small[
+* coefficient estimates estimate `\(\pm\)` standard error
+
+* Morris et al.  2016. Contributions of organic and inorganic matter to sediment volume and accretion in tidal wetlands at steady state. Earth’s Future 4, 110–121. https://doi.org/10.1002/2015EF000334
+
+]
+]
+---
+name: Mixing
+
+### Sediment Bulk Density, LOI and TP
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/Fig2_TPBD_v2.png" alt="Sediment bulk density and loss-on-ignition (LOI) relationship for sediments across Lake Okeechobee for the 1998 and 2006 surveys with correlation and mixed model lines (Top).  Sediment total phosphorus (TP) concentration and bulk density relationship across Lake Okeechobee for 1988, 1998, and 2006 surveys with correlation identified (Bottom)." width="70%" /&gt;
+&lt;p class="caption"&gt;Sediment bulk density and loss-on-ignition (LOI) relationship for sediments across Lake Okeechobee for the 1998 and 2006 surveys with correlation and mixed model lines (Top).  Sediment total phosphorus (TP) concentration and bulk density relationship across Lake Okeechobee for 1988, 1998, and 2006 surveys with correlation identified (Bottom).&lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: Boxplot
+
+### Sediment TP conc, storage and bulk density 
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/Figx_bxplt.png" alt="Boxplot and pairwise comparison of sediment total phosphorus (TP) concentration (Top), TP storage (middle), and bulk density (bottom) for each survey. Letters above box-and-whicker plots indicate statistical differences based on Dunn test results." width="45%" /&gt;
+&lt;p class="caption"&gt;Boxplot and pairwise comparison of sediment total phosphorus (TP) concentration (Top), TP storage (middle), and bulk density (bottom) for each survey. Letters above box-and-whicker plots indicate statistical differences based on Dunn test results.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: Krig1
+
+### TP Krige
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/Fig3_LOK_TPKrig.png" alt="Semivariogram and ordinary krige interpolated surface of total phoshorus for 1988, 1998, and 2006 surveys across Lake Okeechobee." width="75%" /&gt;
+&lt;p class="caption"&gt;Semivariogram and ordinary krige interpolated surface of total phoshorus for 1988, 1998, and 2006 surveys across Lake Okeechobee.&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+name: Krig2
+
+### Bulk density Krige
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/FigSx_LOK_BDKrig.png" alt="Semivariogram  and ordinary krige interpolated surface of bulk density for 1988, 1998, and 2006 surveys across Lake Okeechobee. " width="75%" /&gt;
+&lt;p class="caption"&gt;Semivariogram  and ordinary krige interpolated surface of bulk density for 1988, 1998, and 2006 surveys across Lake Okeechobee. &lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: Change
+
+### Change
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/FigS4_LOK_TPBDchng_per.png" alt="Relative percent difference between 1998 and 1998 (left) and 1998 and 2006 (right) for total phosphorus (top) and bulk density (bottom)." width="75%" /&gt;
+&lt;p class="caption"&gt;Relative percent difference between 1998 and 1998 (left) and 1998 and 2006 (right) for total phosphorus (top) and bulk density (bottom).&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+name:cdf
+
+### eCDF
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/FigSx_LOK_ecdfs_v2.png" alt="Empirical cumulative distribution functions (eCDFs) of interpolated total phosphorus (TP) and bulk density surfaces (left) for each survey. Lake area of values less than or equal to two thresholds for TP and bulk density (right). " width="75%" /&gt;
+&lt;p class="caption"&gt;Empirical cumulative distribution functions (eCDFs) of interpolated total phosphorus (TP) and bulk density surfaces (left) for each survey. Lake area of values less than or equal to two thresholds for TP and bulk density (right). &lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: TPVol
+
+### TP Volumetric Conc.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="./plots/Figx_LOK_TPBDratio.png" alt="Volumetric total phosphorus (TP) concentrations estimated from TP and bulk density interpolated surfaces for each survey across Lake Okeechobee. " width="50%" /&gt;
+&lt;p class="caption"&gt;Volumetric total phosphorus (TP) concentrations estimated from TP and bulk density interpolated surfaces for each survey across Lake Okeechobee. &lt;/p&gt;
+&lt;/div&gt;
+
+---
+name: blank
+class: inverse center middle
+
+
+---
+name: TSSGAM_tab
+
+### TSS Spatio-temporal Model
+
+
+&lt;template id="ae188a6d-9fdb-4cb7-918c-79d7cfa17d3c"&gt;&lt;style&gt;
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+&lt;/style&gt;&lt;div class="tabwid"&gt;&lt;style&gt;.cl-aea9dd32{border-collapse:collapse;}.cl-aea01f68{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-aea01f69{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-aea046e6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-aea046e7{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-aea09452{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09453{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09454{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09455{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09456{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09457{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09458{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea09459{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0945a{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0945b{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0945c{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb58{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb59{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb5a{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb5b{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb5c{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb5d{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb5e{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb5f{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb60{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb61{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0bb62{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e286{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e287{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e288{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e289{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e28a{width:144pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e28b{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aea0e28c{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}&lt;/style&gt;&lt;table class='cl-aea9dd32'&gt;&lt;tbody&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aea09452"&gt;&lt;p class="cl-aea046e6"&gt;&lt;span class="cl-aea01f68"&gt;Component&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09453"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;Term&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09456"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;Estimate&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09454"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;Std Error&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09455"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;t-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09455"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;p-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aea09458"&gt;&lt;p class="cl-aea046e6"&gt;&lt;span class="cl-aea01f69"&gt;A. parametric coefficients&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0945b"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;(Intercept)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0945a"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;2.55&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09457"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;0.02&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09459"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;145.52&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09459"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aea09452"&gt;&lt;p class="cl-aea046e6"&gt;&lt;span class="cl-aea01f68"&gt;Component&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09453"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;Term&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09456"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;edf&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09454"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;Ref. df&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09455"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;F-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea09455"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f68"&gt;p-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td  rowspan="3"class="cl-aea09458"&gt;&lt;p class="cl-aea046e6"&gt;&lt;span class="cl-aea01f69"&gt;B. smooth terms&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb5a"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;s(WY)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb59"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;21.89&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb58"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt; 27.00&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0945c"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;16.07&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0945c"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aea0bb5f"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;s(UTMX,UTMY)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb5e"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;25.59&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb5d"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt; 28.00&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb5b"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;55.03&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb5b"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aea0e287"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;ti(UTMX,UTMY,WY)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb60"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;58.72&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb62"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;618.00&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb61"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt; 0.26&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aea0bb61"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;tfoot&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td  colspan="6"class="cl-aea0e28a"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;Adjusted R-squared: 0.75, Deviance explained 0.78&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td  colspan="6"class="cl-aea0e28a"&gt;&lt;p class="cl-aea046e7"&gt;&lt;span class="cl-aea01f69"&gt;fREML: 647, Scale est.: 0.23, N: 758&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;&lt;/table&gt;&lt;/div&gt;&lt;/template&gt;
+&lt;div class="flextable-shadow-host" id="82bc0a4c-9a3a-4032-91a3-a45b03367e32"&gt;&lt;/div&gt;
+&lt;script&gt;
+var dest = document.getElementById("82bc0a4c-9a3a-4032-91a3-a45b03367e32");
+var template = document.getElementById("ae188a6d-9fdb-4cb7-918c-79d7cfa17d3c");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+&lt;/script&gt;
+
+---
+name: TPGAM_tab
+
+### TP Spatio-temporal Model
+
+
+&lt;template id="78dd8dc1-96c8-4624-b900-970a1407a399"&gt;&lt;style&gt;
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+&lt;/style&gt;&lt;div class="tabwid"&gt;&lt;style&gt;.cl-aecabbba{border-collapse:collapse;}.cl-aec28404{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-aec28405{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-aec28406{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-aec28407{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-aec2d1e8{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1e9{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1ea{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1eb{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1ec{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1ed{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1ee{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1ef{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1f0{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1f1{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2d1f2{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8da{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8db{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8dc{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8dd{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8de{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8df{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8e0{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8e1{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8e2{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8e3{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec2f8e4{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fd6{width:144pt;background-color:transparent;vertical-align: top;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fd7{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fd8{width:59pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fd9{width:66.4pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fda{width:144pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fdb{width:119.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-aec31fdc{width:68.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}&lt;/style&gt;&lt;table class='cl-aecabbba'&gt;&lt;tbody&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aec2d1e8"&gt;&lt;p class="cl-aec28406"&gt;&lt;span class="cl-aec28404"&gt;Component&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1e9"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;Term&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ec"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;Estimate&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ea"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;Std Error&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1eb"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;t-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1eb"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;p-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aec2d1ee"&gt;&lt;p class="cl-aec28406"&gt;&lt;span class="cl-aec28405"&gt;A. parametric coefficients&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1f1"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;(Intercept)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1f0"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;4.46&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ed"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ef"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;338.34&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ef"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aec2d1e8"&gt;&lt;p class="cl-aec28406"&gt;&lt;span class="cl-aec28404"&gt;Component&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1e9"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;Term&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ec"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;edf&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1ea"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;Ref. df&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1eb"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;F-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1eb"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28404"&gt;p-value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td  rowspan="3"class="cl-aec2d1ee"&gt;&lt;p class="cl-aec28406"&gt;&lt;span class="cl-aec28405"&gt;B. smooth terms&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8dc"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;s(WY)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8db"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;19.93&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8da"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt; 23.00&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1f2"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;19.30&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2d1f2"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aec2f8e1"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;s(UTMX,UTMY)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8e0"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;22.67&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8df"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt; 24.00&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8dd"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;47.97&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8dd"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-aec31fd7"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;ti(UTMX,UTMY,WY)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8e2"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;67.69&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8e4"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;514.00&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8e3"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt; 0.42&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-aec2f8e3"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;&amp;lt;0.01&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;tfoot&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td  colspan="6"class="cl-aec31fda"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;Adjusted R-squared: 0.72, Deviance explained 0.76&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td  colspan="6"class="cl-aec31fda"&gt;&lt;p class="cl-aec28407"&gt;&lt;span class="cl-aec28405"&gt;fREML: 428.92, Scale est.: 0.12, N: 755&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;&lt;/table&gt;&lt;/div&gt;&lt;/template&gt;
+&lt;div class="flextable-shadow-host" id="00484476-8422-416d-ae70-6b8afa8cab10"&gt;&lt;/div&gt;
+&lt;script&gt;
+var dest = document.getElementById("00484476-8422-416d-ae70-6b8afa8cab10");
+var template = document.getElementById("78dd8dc1-96c8-4624-b900-970a1407a399");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+&lt;/script&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
